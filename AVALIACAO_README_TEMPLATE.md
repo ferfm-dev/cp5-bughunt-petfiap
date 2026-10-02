@@ -68,7 +68,7 @@
 | teste01 | BanhoTest.deveCobrarPrecoConformeOPorteQuandoForBanho                              | Banho cobra preço por porte: PEQUENO R$ 60, MEDIO R$ 80, GRANDE R$ 100.              | vermelho (expected: <60.0> but was: <100.0>), revelou o bug08.                                       |
 | teste02 | TosaTest.deveDurar60MinutosQuandoForTosa                              | Tosa dura 60 minutos.              | vermelho (expected: <60> but was: <30>), revelou o bug09.                                       |
 | teste03 | AgendaServiceTest.deveRecusarCancelamentoQuandoAtendimentoJaConcluido                              | cancelar() de um atendimento CONCLUIDO deve ser recusado com StatusInvalidoException, e nada é salvo.              | vermelho (Expected StatusInvalidoException to be thrown, but nothing was thrown), revelou o bug10.                                       |
-| teste04 |                               |               |                                        |
+| teste04 | AgendaServiceTest.deveRecusarAgendamentoQuandoDataForNoPassado                              | agendar com data/hora no passado deve ser recusado com IllegalArgumentException, sem consultar nem salvar no banco.              | vermelho (esperava IllegalArgumentException mas veio NullPointerException), revelou o bug11.                                       |
 | teste05 |                               |               |                                        |
 | teste06 |                               |               |                                        |
 
