@@ -6,6 +6,7 @@ import br.com.fiap.petfiap.model.Atendimento;
 import br.com.fiap.petfiap.repository.AtendimentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.Objects;
 
 import java.util.List;
 
@@ -20,7 +21,8 @@ public class AgendaService {
     public Atendimento agendar(Atendimento novo) {
         List<Atendimento> doPet = repository.findByPetNome(novo.getPetNome());
         for (Atendimento a : doPet) {
-            if (a.getPetNome() == novo.getPetNome() && a.getDataHora() == novo.getDataHora()
+            if (Objects.equals(a.getPetNome(), novo.getPetNome())
+                    && Objects.equals(a.getDataHora(), novo.getDataHora())
                     && "AGENDADO".equals(a.getStatus())) {
                 throw new HorarioOcupadoException(
                         "Pet " + novo.getPetNome() + " ja possui atendimento agendado nesse horario");
