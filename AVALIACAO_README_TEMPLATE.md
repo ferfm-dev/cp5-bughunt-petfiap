@@ -70,7 +70,7 @@
 | teste03 | AgendaServiceTest.deveRecusarCancelamentoQuandoAtendimentoJaConcluido                              | cancelar() de um atendimento CONCLUIDO deve ser recusado com StatusInvalidoException, e nada é salvo.              | vermelho (Expected StatusInvalidoException to be thrown, but nothing was thrown), revelou o bug10.                                       |
 | teste04 | AgendaServiceTest.deveRecusarAgendamentoQuandoDataForNoPassado                              | agendar com data/hora no passado deve ser recusado com IllegalArgumentException, sem consultar nem salvar no banco.              | vermelho (esperava IllegalArgumentException mas veio NullPointerException), revelou o bug11.                                       |
 | teste05 | ConsultaVeterinariaTest.deveCobrar150ReaisQuandoForConsultaDeQualquerPorte                              | a Consulta tem preço fixo de R$ 150,00, e o porte do pet não altera o valor (PEQUENO, MEDIO e GRANDE).              | verde de cara, a regra já estava correta. O teste passa a proteger contra regressão.                                       |
-| teste06 |                               |               |                                        |
+| teste06 | AgendaServiceTest.deveRecusarConclusaoQuandoAtendimentoEstaCancelado                              | concluir() de um atendimento CANCELADO deve ser recusado com StatusInvalidoException, e nada é salvo.              | verde de cara, a regra já estava correta. O teste passa a proteger contra regressão.                                       |
 
 ---
 
