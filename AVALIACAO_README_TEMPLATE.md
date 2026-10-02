@@ -64,13 +64,13 @@
 > (regra já estava correta).
 
 | # | Teste escrito (classe.método) | Regra coberta | Resultado ao escrever (vermelho/verde) |
-|---|---|---|---|
-| teste01 | | | |
-| teste02 | | | |
-| teste03 | | | |
-| teste04 | | | |
-| teste05 | | | |
-| teste06 | | | |
+|---|-------------------------------|---------------|----------------------------------------|
+| teste01 | BanhoTest.deveCobrarPrecoConformeOPorteQuandoForBanho                              | Banho cobra preço por porte: PEQUENO R$ 60, MEDIO R$ 80, GRANDE R$ 100.              | vermelho (expected: <60.0> but was: <100.0>), revelou o bug08.                                       |
+| teste02 |                               |               |                                        |
+| teste03 |                               |               |                                        |
+| teste04 |                               |               |                                        |
+| teste05 |                               |               |                                        |
+| teste06 |                               |               |                                        |
 
 ---
 
