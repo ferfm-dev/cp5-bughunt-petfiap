@@ -51,7 +51,7 @@
 |---|---|---|---|
 | clean01 |AtendimentoFactory.java, método criar (~linha 14): os parâmetros se chamavam p, t, n, po, tu e d. |Nomes significativos (Clean Code). Os nomes não revelam a intenção, e quem lê a assinatura não sabe o que é cada argumento. Com tantos String seguidos, ficava fácil trocar a ordem sem perceber. |renomeei para protocolo, tipo, petNome, petPorte, tutorNome e dataHora, atualizando o switch e as chamadas dos construtores. Nenhum comportamento mudou e a suíte seguiu verde. |
 | clean02 |AgendaService.java, método agendar (~linhas 30 e 31): um System.out.println("Recibo: ...") logo depois do save, dentro da regra de negócio. |Saída de depuração no código de produção e mistura de responsabilidades. O service deve agendar e devolver o resultado, não escrever no console. O println também acessava dados do objeto salvo só para imprimir, o que gerava risco de falha: foi ele que estourou o NullPointerException quando o save devolvia null. |removi o println e o método passou a devolver diretamente repository.save(novo). Se for preciso registrar o evento, o certo é um Logger e não System.out. |
-| clean03 | | | |
+| clean03 |GeradorProtocolo.java, construtor privado (~linha 14): System.out.println("GeradorProtocolo criado!"). |Código de depuração esquecido em produção e efeito colateral dentro de construtor. Um construtor deve apenas inicializar o objeto, e escrever no console polui a saída da aplicação e dos testes. |removi o println, e o construtor passou a só inicializar o contador. O comportamento do Singleton não mudou. |
 | clean04 | | | |
 | clean05 | | | |
 | clean06 | | | |
