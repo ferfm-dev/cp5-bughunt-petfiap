@@ -26,7 +26,7 @@ public class AgendaService {
         for (Atendimento a : doPet) {
             if (Objects.equals(a.getPetNome(), novo.getPetNome())
                     && Objects.equals(a.getDataHora(), novo.getDataHora())
-                    && "AGENDADO".equals(a.getStatus())) {
+                    && Atendimento.STATUS_AGENDADO.equals(a.getStatus())) {
                 throw new HorarioOcupadoException(
                         "Pet " + novo.getPetNome() + " ja possui atendimento agendado nesse horario");
             }

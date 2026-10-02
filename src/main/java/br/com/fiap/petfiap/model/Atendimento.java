@@ -11,6 +11,10 @@ import java.time.LocalDateTime;
 @Table(name = "atendimentos")
 public abstract class Atendimento {
 
+    public static final String STATUS_AGENDADO = "AGENDADO";
+    public static final String STATUS_CONCLUIDO = "CONCLUIDO";
+    public static final String STATUS_CANCELADO = "CANCELADO";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -35,7 +39,7 @@ public abstract class Atendimento {
         this.petPorte = petPorte;
         this.tutorNome = tutorNome;
         this.dataHora = dataHora;
-        this.status = "AGENDADO";
+        this.status = STATUS_AGENDADO;
     }
 
     // tipo do atendimento (BANHO, TOSA, CONSULTA)
@@ -57,7 +61,7 @@ public abstract class Atendimento {
         if (!"AGENDADO".equals(status)) {
             throw new StatusInvalidoException("Atendimento " + protocolo + " nao pode ser concluido: status " + status);
         }
-        status = "CONCLUIDO";
+        status = STATUS_CONCLUIDO;
     }
 
     // Cancela o atendimento
@@ -66,7 +70,7 @@ public abstract class Atendimento {
         if (!"AGENDADO".equals(status)) {
             throw new StatusInvalidoException("Atendimento " + protocolo + " nao pode ser cancelado: status " + status);
         }
-        status = "CANCELADO";
+        status = STATUS_CANCELADO;
     }
 
     // Getters e Setters
