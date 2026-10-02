@@ -50,7 +50,7 @@
 | # | Onde estava | Qual princípio/boas práticas era violado | O que eu mudei |
 |---|---|---|---|
 | clean01 |AtendimentoFactory.java, método criar (~linha 14): os parâmetros se chamavam p, t, n, po, tu e d. |Nomes significativos (Clean Code). Os nomes não revelam a intenção, e quem lê a assinatura não sabe o que é cada argumento. Com tantos String seguidos, ficava fácil trocar a ordem sem perceber. |renomeei para protocolo, tipo, petNome, petPorte, tutorNome e dataHora, atualizando o switch e as chamadas dos construtores. Nenhum comportamento mudou e a suíte seguiu verde. |
-| clean02 | | | |
+| clean02 |AgendaService.java, método agendar (~linhas 30 e 31): um System.out.println("Recibo: ...") logo depois do save, dentro da regra de negócio. |Saída de depuração no código de produção e mistura de responsabilidades. O service deve agendar e devolver o resultado, não escrever no console. O println também acessava dados do objeto salvo só para imprimir, o que gerava risco de falha: foi ele que estourou o NullPointerException quando o save devolvia null. |removi o println e o método passou a devolver diretamente repository.save(novo). Se for preciso registrar o evento, o certo é um Logger e não System.out. |
 | clean03 | | | |
 | clean04 | | | |
 | clean05 | | | |
